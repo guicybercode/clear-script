@@ -19,10 +19,6 @@ A web-based image processing application implementing a pixel-level background r
 ![Main Interface](screenshots/main-interface.png)
 *The retro-styled main interface with file selection and settings*
 
-### Image Preview
-![Image Preview](screenshots/preview.png)
-*Before and after comparison of processed images*
-
 ### Processing Progress
 ![Processing Progress](screenshots/progress.png)
 *Real-time progress bar during batch processing*
@@ -146,10 +142,6 @@ Contributions to this project are accepted through the standard pull request wor
 
 ![Example 1 Result](examples/example1-after.png)
 *After: Logo with transparent background*
-
-### Example 2: Multiple Images
-![Example 2](examples/example2-batch.png)
-*Batch processing multiple logos*
 
 ---
 
