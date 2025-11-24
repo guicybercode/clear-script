@@ -100,15 +100,27 @@ def download_all():
     data = request.json
     filenames = data.get('files', [])
     
+    if not filenames:
+        return jsonify({'error': 'Nenhum arquivo especificado'}), 400
+    
     temp_zip = tempfile.NamedTemporaryFile(delete=False, suffix='.zip')
+    temp_zip_path = temp_zip.name
+    temp_zip.close()
     
-    with zipfile.ZipFile(temp_zip.name, 'w') as zipf:
-        for filename in filenames:
-            filepath = os.path.join(PASTA_SEM_FUNDO, filename)
-            if os.path.exists(filepath):
-                zipf.write(filepath, filename)
-    
-    return send_file(temp_zip.name, mimetype='application/zip', as_attachment=True, download_name='imagens_sem_fundo.zip')
+    try:
+        with zipfile.ZipFile(temp_zip_path, 'w') as zipf:
+            for filename in filenames:
+                filepath = os.path.join(PASTA_SEM_FUNDO, filename)
+                if os.path.exists(filepath):
+                    zipf.write(filepath, filename)
+        
+        return send_file(temp_zip_path, mimetype='application/zip', as_attachment=True, download_name='imagens_sem_fundo.zip')
+    except Exception as e:
+        try:
+            os.unlink(temp_zip_path)
+        except:
+            pass
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     criar_pastas()
