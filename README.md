@@ -2,6 +2,8 @@
 
 A web-based image processing application implementing a pixel-level background removal algorithm with a retro graphical user interface inspired by Windows 95/98 design paradigms.
 
+**Repository**: [https://github.com/guicybercode/clear-script](https://github.com/guicybercode/clear-script)
+
 ## Features
 
 - **Multiple Image Upload** - Concurrent processing of multiple image files
@@ -36,8 +38,8 @@ A web-based image processing application implementing a pixel-level background r
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd logo
+git clone https://github.com/guicybercode/clear-script.git
+cd clear-script
 ```
 
 2. Install dependencies:
