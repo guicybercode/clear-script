@@ -1,15 +1,15 @@
 # Background Remover - Retro Edition
 
-A nostalgic web application with a Windows 95/98 retro interface for removing white backgrounds from images, making them transparent.
+A web-based image processing application implementing a pixel-level background removal algorithm with a retro graphical user interface inspired by Windows 95/98 design paradigms.
 
 ## Features
 
-- 🖼️ **Multiple Image Upload** - Select and process multiple images at once
-- 👁️ **Before/After Preview** - Visualize original and processed images side by side
-- ⚙️ **Adjustable Tolerance** - Fine-tune background removal sensitivity (0-50)
-- 📦 **Batch Processing** - Process all selected images with progress tracking
-- 💾 **Download Options** - Download individual images or all as a ZIP file
-- 🎨 **Retro Interface** - Authentic Windows 95/98 visual design
+- **Multiple Image Upload** - Concurrent processing of multiple image files
+- **Before/After Preview** - Comparative visualization of original and processed images
+- **Adjustable Tolerance** - Configurable threshold parameter for background detection (range: 0-50)
+- **Batch Processing** - Asynchronous batch processing with progress monitoring
+- **Download Options** - Individual file download or compressed archive export (ZIP format)
+- **Retro Interface** - Historical UI design implementation
 
 ## Screenshots
 
@@ -57,12 +57,12 @@ http://localhost:5000
 
 ## Usage
 
-1. **Select Images**: Click "Escolher Arquivos..." to select one or more images
-2. **Adjust Tolerance**: Use the slider to set the background removal sensitivity
-   - Lower values (0-10): More strict, only pure white is removed
-   - Higher values (30-50): More permissive, removes near-white colors
-3. **Process**: Click "Processar Imagens" to start processing
-4. **Download**: Download individual images or all processed images as a ZIP file
+1. **Image Selection**: Utilize the file input interface to select one or more image files
+2. **Tolerance Configuration**: Adjust the tolerance parameter via the slider control
+   - Lower threshold values (0-10): Strict mode, removes only pixels with RGB values approaching (255, 255, 255)
+   - Higher threshold values (30-50): Permissive mode, removes pixels within the specified tolerance range
+3. **Processing Execution**: Initiate the background removal algorithm via the process button
+4. **Output Retrieval**: Download processed images individually or as a compressed archive
 
 ## Supported Formats
 
@@ -90,27 +90,28 @@ logo/
 └── sem_fundo/            # Processed images (transparent background)
 ```
 
-## Technical Details
+## Technical Specifications
 
-### Backend
-- **Flask** - Web framework
-- **Pillow (PIL)** - Image processing
-- **Werkzeug** - File upload handling
+### Backend Architecture
+- **Flask** - WSGI web application framework
+- **Pillow (PIL)** - Python Imaging Library for image manipulation
+- **Werkzeug** - WSGI utility library for file upload management
 
-### Frontend
-- Pure HTML/CSS/JavaScript
-- Retro Windows 95/98 styling
-- No external dependencies
+### Frontend Implementation
+- Standard HTML5, CSS3, and ECMAScript (JavaScript)
+- Custom CSS styling implementing Windows 95/98 visual design patterns
+- Zero external JavaScript dependencies
 
-## How It Works
+## Algorithm Description
 
-The application uses a pixel-based approach to detect and remove white backgrounds:
+The application implements a pixel-level background removal algorithm using the following procedure:
 
-1. Converts images to RGBA format
-2. Analyzes each pixel's RGB values
-3. If a pixel is white (or near-white based on tolerance), sets alpha channel to 0 (transparent)
-4. Preserves all other pixels with their original colors
-5. Saves the result as a PNG with transparency
+1. **Color Space Conversion**: Transform input image to RGBA color space
+2. **Pixel Analysis**: Iterate through each pixel, extracting RGB channel values
+3. **Threshold Comparison**: For each pixel, compare RGB values against the white threshold (255 - tolerance)
+4. **Alpha Channel Modification**: If pixel meets threshold criteria, set alpha channel to 0 (fully transparent)
+5. **Pixel Preservation**: Maintain original RGB values for non-background pixels
+6. **Output Generation**: Export processed image in PNG format with alpha channel transparency
 
 ## Configuration
 
@@ -122,16 +123,16 @@ You can modify the following in `app.py`:
 
 ## License
 
-This project is open source and available for personal and commercial use.
+This project is distributed under an open source license, permitting both personal and commercial utilization.
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions to this project are accepted through the standard pull request workflow. Please ensure code follows established conventions and includes appropriate documentation.
 
 ## Acknowledgments
 
-- Inspired by the classic Windows 95/98 interface design
-- Built with Flask and Pillow
+- Interface design inspired by historical Windows 95/98 graphical user interface specifications
+- Implemented using Flask web framework and Pillow image processing library
 
 ---
 
