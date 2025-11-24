@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remover Fundo - Retro Edition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="window">
+        <div class="title-bar">
+            <div class="title-bar-text">Remover Fundo de Imagens v1.0</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        
+        <div class="window-body">
+            <div class="panel">
+                <h2>Selecionar Imagens</h2>
+                <div class="file-input-wrapper">
+                    <input type="file" id="fileInput" multiple accept="image/*" class="file-input">
+                    <label for="fileInput" class="file-label">Escolher Arquivos...</label>
+                </div>
+                <div id="fileList" class="file-list"></div>
+            </div>
+            
+            <div class="panel">
+                <h2>Configurações</h2>
+                <div class="slider-container">
+                    <label for="tolerancia">Tolerância: <span id="toleranciaValue">10</span></label>
+                    <input type="range" id="tolerancia" min="0" max="50" value="10" class="slider">
+                    <div class="slider-labels">
+                        <span>0 (Rigoroso)</span>
+                        <span>50 (Permissivo)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button id="processBtn" class="button">Processar Imagens</button>
+                <button id="downloadAllBtn" class="button" disabled>Baixar Todas (ZIP)</button>
+            </div>
+            
+            <div class="panel">
+                <h2>Progresso</h2>
+                <div class="progress-container">
+                    <div id="progressBar" class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                    <div id="progressText" class="progress-text">0%</div>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <h2>Resultados</h2>
+                <div id="results" class="results-grid"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
+
